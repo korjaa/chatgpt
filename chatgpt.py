@@ -15,17 +15,25 @@ def list_engines():
     return engines
 #print("\n".join(list_engines()))
 
+message_log = [
+    {
+        "role": "system",
+        "content": "You are a helpful assistant. You don't split code examples in multiple pieces."
+    }]
+
 try:
-    message_log = [{"role": "system", "content": "You are a helpful assistant. You don't split code examples in multiple pieces."}]
     while True:
-        message = input('➑  ')
+        # Query user
+        message = input("➑  ")
         message_log.append({"role": "user", "content": message})
 
+        # Connect GPT
         events = openai.ChatCompletion.create(
             model = "gpt-4",
             messages = message_log,
             stream=True)
 
+        # Stream response
         for result in events:
             try:
                 print(result.choices[0].delta.content, end="")
