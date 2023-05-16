@@ -33,14 +33,20 @@ try:
             messages = message_log,
             stream=True)
 
-        # Stream response
+        # Receive response
+        response = ""
         for result in events:
             try:
-                print(result.choices[0].delta.content, end="")
+                partial_response = result.choices[0].delta.content
+                response += partial_response
+                print(partial_response, end="")
                 sys.stdout.flush()
             except AttributeError:
                 pass
         print()
+
+        # Append response to log
+        message_log.append({"role": "assistant", "content": response})
 except KeyboardInterrupt:
     print()
     pass
