@@ -16,7 +16,8 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            f"{pkg_name}={pkg_name}.cli:main"
+            f"chatgpt={pkg_name}.assistant:main",
+            f"cargpt={pkg_name}.mechanic:main"
         ]
     },
     install_requires=[
