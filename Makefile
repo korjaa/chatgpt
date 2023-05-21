@@ -1,18 +1,23 @@
-TOOLS := ${HOME}/.shortcuts/ChatGPT
-TOOLS += ${HOME}/.shortcuts/CarGPT
+
+TOOLS := ${HOME}/bin/chatgpt
+TOOLS += ${HOME}/bin/cargpt
 
 .PHONY: default
 default:
 	echo "make install"
 
-${HOME}/.shortcuts:
+${HOME}/bin:
 	mkdir "$@"
 
-${HOME}/.shortcuts/ChatGPT: | ${HOME}/.shortcuts
-	cp chatgpt.sh "$@"
+venv:
+	virtualenv venv
+	venv/bin/python -m pip install -e .
 
-${HOME}/.shortcuts/CarGPT: | ${HOME}/.shortcuts
-	cp cargpt.sh "$@"
+${HOME}/bin/chatgpt: | ${HOME}/bin venv
+	ln -s "$(shell pwd)/venv/bin/chatgpt" "$@"
+
+${HOME}/bin/cargpt: | ${HOME}/bin venv
+	ln -s "$(shell pwd)/venv/bin/cargpt" "$@"
 
 .PHONY: install
 install: ${TOOLS}
