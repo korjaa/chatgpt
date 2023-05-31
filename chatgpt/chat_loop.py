@@ -33,7 +33,10 @@ def loop(message_log):
                 print()
                 break
             except requests.exceptions.ChunkedEncodingError:
-                logger.warning("Connection broke, retry.")
+                logger.warning("requests.exceptions.ChunkedEncodingError")
+                continue
+            except openai.error.APIConnectionError:
+                logger.warning("openai.error.APIConnectionError")
                 continue
 
         # Append response to log
