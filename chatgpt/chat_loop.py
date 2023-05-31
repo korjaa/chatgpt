@@ -8,7 +8,11 @@ import requests
 def loop(message_log):
     while True:
         # Query user
-        message = input("➑  ")
+        try:
+            message = input("➑  ")
+        except EOFError:
+            print()
+            break
         message_log.append({"role": "user", "content": message})
 
         # Retries
