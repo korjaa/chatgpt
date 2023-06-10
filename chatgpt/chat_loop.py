@@ -1,7 +1,27 @@
+import os
 import sys
-import openai
+import json
+import subprocess
 import logging
 logger = logging.getLogger(__name__)
+
+import openai
+
+def is_android():
+    return False
+    return os.uname().machine == 'aarch64'
+
+def get_input():
+    if is_android():
+        sout = subprocess.check_output(["termux-dialog"])
+        sout = json.loads(sout)
+        if sout["code"] == -2:
+            raise EOFError
+        result = sout["text"]
+        logger.info(result)
+    else:
+        result = input("➑  ")
+    return result
 
 import requests
 
@@ -9,7 +29,7 @@ def loop(message_log):
     while True:
         # Query user
         try:
-            message = input("➑  ")
+            message = get_input()
         except EOFError:
             print()
             break
