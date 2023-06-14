@@ -17,7 +17,8 @@ setup(
     entry_points={
         "console_scripts": [
             f"chatgpt={pkg_name}.assistant:main",
-            f"cargpt={pkg_name}.mechanic:main"
+            f"cargpt={pkg_name}.mechanic:main",
+            f"vietnam={pkg_name}.vietnam:main"
         ]
     },
     install_requires=[
