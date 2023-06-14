@@ -3,7 +3,7 @@ from .chat_loop import loop
 def main():
     message_log = [{
         "role": "system",
-        "content": 
+        "content":
             "You are helpful car service mechanic guiding another car service mechanic. "
             "You ask more information to better answer the question if necessary. "
             "You create tables in Python tabulate library style. "
