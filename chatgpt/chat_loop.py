@@ -12,7 +12,10 @@ def is_android():
 
 def input_android():
     sout = subprocess.check_output(["termux-dialog"])
-    sout = json.loads(sout)
+    try:
+        sout = json.loads(sout)
+    except json.decoder.JSONDecodeError:
+        return ""
     if sout["code"] == -2:
         raise EOFError
     result = sout["text"]
