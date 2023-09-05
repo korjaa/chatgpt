@@ -10,10 +10,10 @@ ${HOME}/.shortcuts:
 	mkdir "$@"
 
 ${HOME}/.shortcuts/ChatGPT: | ${HOME}/.shortcuts
-	cp chatgpt.sh "$@"
+	cp termux_android_shortcuts/chatgpt.sh "$@"
 
 ${HOME}/.shortcuts/CarGPT: | ${HOME}/.shortcuts
-	cp cargpt.sh "$@"
+	cp termux_android_shortcuts/cargpt.sh "$@"
 
 .PHONY: install
 install: ${TOOLS}
