@@ -7,6 +7,8 @@ logger = logging.getLogger(__name__)
 
 import openai
 
+import chatgpt
+
 def is_android():
     return os.uname().machine == 'aarch64'
 
@@ -51,14 +53,17 @@ def loop(message_log):
             try:
                 # Connect GPT
                 events = openai.ChatCompletion.create(
-                    model = "gpt-4",
-                    messages = message_log,
+                    deployment_id=chatgpt.deployment_id,
+                    model=chatgpt.model,
+                    messages=message_log,
                     stream=True)
 
                 # Receive response
                 response = ""
                 for result in events:
                     try:
+                        if not result.choices:
+                            continue
                         partial_response = result.choices[0].delta.content
                         response += partial_response
                         print(partial_response, end="")
