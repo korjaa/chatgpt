@@ -22,6 +22,6 @@ setup(
         ]
     },
     install_requires=[
-        "openai ~= 0.27"
+        "openai ~= 0.28"
     ],
 )
