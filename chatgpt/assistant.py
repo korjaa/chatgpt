@@ -15,4 +15,3 @@ def main():
         loop(message_log)
     except KeyboardInterrupt:
         print()
-        pass
