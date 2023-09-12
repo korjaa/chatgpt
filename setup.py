@@ -18,7 +18,8 @@ setup(
         "console_scripts": [
             f"chatgpt={pkg_name}.assistant:main",
             f"cargpt={pkg_name}.mechanic:main",
-            f"vietnam={pkg_name}.vietnam:main"
+            f"vietnam={pkg_name}.vietnam:main",
+            f"pythongpt={pkg_name}.python:main"
         ]
     },
     install_requires=[

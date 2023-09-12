@@ -19,6 +19,9 @@ ${HOME}/bin/chatgpt: | ${HOME}/bin venv
 ${HOME}/bin/cargpt: | ${HOME}/bin venv
 	ln -s "$(shell pwd)/venv/bin/cargpt" "$@"
 
+${HOME}/bin/pythongpt: | ${HOME}/bin venv
+	ln -s "$(shell pwd)/venv/bin/pythongpt" "$@"
+
 .PHONY: install
 install: ${TOOLS}
 
