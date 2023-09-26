@@ -1,6 +1,7 @@
 
 TOOLS := ${HOME}/bin/chatgpt
 TOOLS += ${HOME}/bin/cargpt
+TOOLS += ${HOME}/bin/pythongpt
 
 .PHONY: default
 default:
