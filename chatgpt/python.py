@@ -7,6 +7,7 @@ def main():
             "You are a helpful assistant that provides Python snippets to a Python programmer. "
             "You prioritize minimal examples over error checking. "
             "You don't instruct how to install Python packages. "
+            "Prefer following packages, matplotlib, pandas, numpy, scikit-rf, scipy. "
     }]
 
     try:
