@@ -53,8 +53,8 @@ def loop(message_log):
             try:
                 # Connect GPT
                 events = openai.ChatCompletion.create(
-                    deployment_id=chatgpt.deployment_id,
-                    model=chatgpt.model,
+                    deployment_id=chatgpt.deployment_id,  # This defines model in Azure
+                    model="gpt-4",  # Not used in Azure
                     messages=message_log,
                     stream=True)
 
